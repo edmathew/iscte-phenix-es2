@@ -1,7 +1,7 @@
 package business;
+
 import java.util.HashSet;
 import java.util.Set;
-
 
 /***********************************************************
  * Filename: Pessoa.java
@@ -12,89 +12,88 @@ import java.util.Set;
  * @author FBA 2009/10/20
  * 
  ***********************************************************/
-public abstract class Pessoa
-{
+public abstract class Pessoa {
 
-    private String nome;
-    private CalendarDate dataNascimento;
-    private String email;
+	private String nome;
+	private CalendarDate dataNascimento;
+	private String email;
 
-    /***********************************************************
+	/***********************************************************
      * 
      ***********************************************************/
-     public Pessoa()
-     {
- 	super();
-     }
+	public Pessoa() {
+		super();
+	}
 
-    /***********************************************************
-     * @param nome
-     * @param dataNascimento
-     * @param email
-     ***********************************************************/
-    public Pessoa(String nome, CalendarDate dataNascimento, String email)
-    {
-	this.nome = nome;
-	this.dataNascimento = dataNascimento;
-	this.email = email;
-    }
+	/***********************************************************
+	 * @param nome
+	 * @param dataNascimento
+	 * @param email
+	 ***********************************************************/
+	public Pessoa(String nome, CalendarDate dataNascimento, String email) {
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		this.email = email;
+		assertVars();
+	}
 
-    /***********************************************************
-     * @return the nome
-     ***********************************************************/
-    public String getNome()
-    {
-	return nome;
-    }
+	/**
+	 * Metodo Invariante da Classe
+	 */
+	public boolean assertVars() {
+		return nome != null && !nome.equals("") && dataNascimento != null
+				&& email != null && idade() > 0;
+	}
 
-    /***********************************************************
-     * @return the dataNascimento
-     ***********************************************************/
-    public CalendarDate getDataNascimento()
-    {
-	return dataNascimento;
-    }
+	/***********************************************************
+	 * @return the nome
+	 ***********************************************************/
+	public String getNome() {
+		return nome;
+	}
 
-    /***********************************************************
-     * @return the email
-     ***********************************************************/
-    public String getEmail()
-    {
-	return email;
-    }
+	/***********************************************************
+	 * @return the dataNascimento
+	 ***********************************************************/
+	public CalendarDate getDataNascimento() {
+		return dataNascimento;
+	}
 
-    /***********************************************************
-     * @param nome
-     *            the nome to set
-     ***********************************************************/
-    public void setNome(String nome)
-    {
-	this.nome = nome;
-    }
+	/***********************************************************
+	 * @return the email
+	 ***********************************************************/
+	public String getEmail() {
+		return email;
+	}
 
-    /***********************************************************
-     * @param dataNascimento
-     *            the dataNascimento to set
-     ***********************************************************/
-    public void setDataNascimento(CalendarDate dataNascimento)
-    {
-	this.dataNascimento = dataNascimento;
-    }
+	/***********************************************************
+	 * @param nome
+	 *            the nome to set
+	 ***********************************************************/
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    /***********************************************************
-     * @param email
-     *            the email to set
-     ***********************************************************/
-    public void setEmail(String email)
-    {
-	this.email = email;
-    }
+	/***********************************************************
+	 * @param dataNascimento
+	 *            the dataNascimento to set
+	 ***********************************************************/
+	public void setDataNascimento(CalendarDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
 
-    /***********************************************************
-     * @return
-     ***********************************************************/
-    public int idade()
-    {
-	return CalendarDate.today().yearsSince(dataNascimento);
-    }
+	/***********************************************************
+	 * @param email
+	 *            the email to set
+	 ***********************************************************/
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/***********************************************************
+	 * @return
+	 ***********************************************************/
+	public int idade() {
+		return CalendarDate.today().yearsSince(dataNascimento);
+	}
 }

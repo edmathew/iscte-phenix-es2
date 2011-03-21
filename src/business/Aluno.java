@@ -113,8 +113,10 @@ public class Aluno extends Pessoa {
 	 ***********************************************************/
 	public void setNumero(int numero) {
 		this.numero = numero;
+		assert numero > 0: "Numero de Aluno Invalido";
 	}
 
+	
 	/***********************************************************
 	 * Calcula os creditos obtidos pelo aluno num curso.
 	 * 

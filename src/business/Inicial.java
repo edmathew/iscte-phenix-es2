@@ -43,7 +43,7 @@ public abstract class Inicial
 	initializeLookAndFeel();
 
 	// open(args[0]);
-	open("data/PhoenixData.cmd");
+	open("data/phenix_B.cmd");
 
 	infoState();
 	
