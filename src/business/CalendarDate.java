@@ -24,6 +24,14 @@ public class CalendarDate
     {
 	return calendarDates;
     }
+    
+    /***********************************************************
+     * 
+     ***********************************************************/
+     public static void reset()
+     {
+	 calendarDates.clear();
+     }
 
     public CalendarDate()
     {
