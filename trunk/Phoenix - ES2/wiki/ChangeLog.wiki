@@ -1,0 +1,5 @@
+= ChangeLOG =
+<ul>
+<li><b>21/03/2011:</b>
+<ul><li>*Migração do Código Base para a plataforma SVN*
+<li>*Inicio da utilização de JUnit para a construção de cenários.*
