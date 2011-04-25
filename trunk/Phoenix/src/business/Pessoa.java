@@ -1,7 +1,4 @@
 package business;
-import java.util.HashSet;
-import java.util.Set;
-
 
 /***********************************************************
  * Filename: Pessoa.java
@@ -12,89 +9,106 @@ import java.util.Set;
  * @author FBA 2009/10/20
  * 
  ***********************************************************/
-public abstract class Pessoa
-{
+public abstract class Pessoa {
 
-    private String nome;
-    private CalendarDate dataNascimento;
-    private String email;
+	private String nome;
+	private CalendarDate dataNascimento;
+	private String email;
 
-    /***********************************************************
+	/** Invariante da classe. */
+	private boolean checkInvariants() {
+		return nome != null && nome.length() > 0 && dataNascimento != null
+				&& idade() > 0 && email != null && email.length() > 0;
+	}
+
+	/***********************************************************
      * 
      ***********************************************************/
-     public Pessoa()
-     {
- 	super();
-     }
+	public Pessoa() {
+		super();
+		assert checkInvariants() : "Class Invariant isn't satisfied";
+	}
 
-    /***********************************************************
-     * @param nome
-     * @param dataNascimento
-     * @param email
-     ***********************************************************/
-    public Pessoa(String nome, CalendarDate dataNascimento, String email)
-    {
-	this.nome = nome;
-	this.dataNascimento = dataNascimento;
-	this.email = email;
-    }
+	/***********************************************************
+	 * @param nome
+	 * @param dataNascimento
+	 * @param email
+	 ***********************************************************/
+	public Pessoa(String nome, CalendarDate dataNascimento, String email) {
+		assert nome != null && nome.length() > 0 : "Invalid nome -> " + nome;
+		assert dataNascimento != null
+				&& dataNascimento.isBefore(CalendarDate.today()) : "Invalid dataNascimento -> "
+				+ dataNascimento;
+		assert email != null && email.length() > 0 : "Invalid Email->" + email;
 
-    /***********************************************************
-     * @return the nome
-     ***********************************************************/
-    public String getNome()
-    {
-	return nome;
-    }
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		this.email = email;
 
-    /***********************************************************
-     * @return the dataNascimento
-     ***********************************************************/
-    public CalendarDate getDataNascimento()
-    {
-	return dataNascimento;
-    }
+		assert checkInvariants() : "Class Invariant isn't satisfied";
+	}
 
-    /***********************************************************
-     * @return the email
-     ***********************************************************/
-    public String getEmail()
-    {
-	return email;
-    }
+	/***********************************************************
+	 * @return the nome
+	 ***********************************************************/
+	public String getNome() {
+		return nome;
+	}
 
-    /***********************************************************
-     * @param nome
-     *            the nome to set
-     ***********************************************************/
-    public void setNome(String nome)
-    {
-	this.nome = nome;
-    }
+	/***********************************************************
+	 * @return the dataNascimento
+	 ***********************************************************/
+	public CalendarDate getDataNascimento() {
+		return dataNascimento;
+	}
 
-    /***********************************************************
-     * @param dataNascimento
-     *            the dataNascimento to set
-     ***********************************************************/
-    public void setDataNascimento(CalendarDate dataNascimento)
-    {
-	this.dataNascimento = dataNascimento;
-    }
+	/***********************************************************
+	 * @return the email
+	 ***********************************************************/
+	public String getEmail() {
+		return email;
+	}
 
-    /***********************************************************
-     * @param email
-     *            the email to set
-     ***********************************************************/
-    public void setEmail(String email)
-    {
-	this.email = email;
-    }
+	/***********************************************************
+	 * @param nome
+	 *            the nome to set
+	 ***********************************************************/
+	public void setNome(String nome) {
+		assert nome != null && nome.length() > 0 : "Invalid nome -> " + nome;
+		this.nome = nome;
+		assert checkInvariants() : "Class Invariant isn't satisfied";
+	}
 
-    /***********************************************************
-     * @return
-     ***********************************************************/
-    public int idade()
-    {
-	return CalendarDate.today().yearsSince(dataNascimento);
-    }
+	/***********************************************************
+	 * @param dataNascimento
+	 *            the dataNascimento to set
+	 ***********************************************************/
+	public void setDataNascimento(CalendarDate dataNascimento) {
+		assert dataNascimento != null
+				&& dataNascimento.isBefore(CalendarDate.today()) : "Invalid dataNascimento -> "
+				+ dataNascimento;
+		this.dataNascimento = dataNascimento;
+		assert checkInvariants() : "Class Invariant isn't satisfied";
+	}
+
+	/***********************************************************
+	 * @param email
+	 *            the email to set
+	 ***********************************************************/
+	public void setEmail(String email) {
+		assert email != null && email.length() > 0 : "Invalid Email ->" + email;
+		this.email = email;
+		assert checkInvariants() : "Class Invariant isn't satisfied";
+		;
+	}
+
+	/***********************************************************
+	 * @return
+	 ***********************************************************/
+	public int idade() {
+		assert dataNascimento != null : "dataNascimento not defined";
+		int idade = CalendarDate.today().yearsSince(dataNascimento);
+		assert idade > 0 : "Invalid result: " + idade + " <= 0";
+		return idade;
+	}
 }
