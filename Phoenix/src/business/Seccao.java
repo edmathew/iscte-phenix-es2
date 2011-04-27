@@ -52,7 +52,7 @@ public class Seccao {
 	public Seccao(String nome, Departamento departamento) {
 		assert nome != null && nome.length() > 0 : "Invalid nome";
 		assert departamento != null : "Invalid departamento";
-		
+
 		this.nome = nome;
 		this.departamento = departamento;
 

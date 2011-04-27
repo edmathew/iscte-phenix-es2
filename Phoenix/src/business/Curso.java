@@ -73,9 +73,9 @@ public class Curso {
 		assert nome != null && nome.length() > 0 : "Invalid nome";
 		assert numerusClausus >= 0 : "Invalid numerusClausus";
 		assert coordenador != null : "Invalid coordenador";
-		assert coordenadorErasmus != null :"Invalid coordenadorErasmus";
-		assert comissaoCientifica != null: "Invalid comissaoCientifica";
-		
+		assert coordenadorErasmus != null : "Invalid coordenadorErasmus";
+		assert comissaoCientifica != null : "Invalid comissaoCientifica";
+
 		this.nome = nome;
 		this.numerusClausus = numerusClausus;
 		this.coordenador = coordenador;
@@ -105,7 +105,7 @@ public class Curso {
 	 *            the nome to set
 	 ***********************************************************/
 	public void setNome(String nome) {
-		assert nome != null && nome.length() > 0: "Invalid nome";
+		assert nome != null && nome.length() > 0 : "Invalid nome";
 		this.nome = nome;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
@@ -165,7 +165,7 @@ public class Curso {
 	 * @param p
 	 ***********************************************************/
 	public void addComissaoCientifica(Professor p) {
-		assert p != null: "Invalid professor";
+		assert p != null : "Invalid professor";
 		this.comissaoCientifica.add(p);
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}

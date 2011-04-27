@@ -52,7 +52,7 @@ public class Oferta {
      ***********************************************************/
 	public Oferta() {
 		super();
-		
+
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 		ofertas.add(this);
 	}
@@ -67,12 +67,12 @@ public class Oferta {
 	 ***********************************************************/
 	public Oferta(Disciplina disciplina, Perfil perfil, int ects,
 			Semestre semestre, int ano, boolean obrigatoria) {
-		assert disciplina != null :"Invalid disciplina";
-		assert perfil != null: "Invalid perfil";
+		assert disciplina != null : "Invalid disciplina";
+		assert perfil != null : "Invalid perfil";
 		assert ects >= 0 : "Invalid ects";
-		assert semestre != null: "Invalid semestre";
-		assert ano > 0: "Invalid ano";
-		
+		assert semestre != null : "Invalid semestre";
+		assert ano > 0 : "Invalid ano";
+
 		this.disciplina = disciplina;
 		this.perfil = perfil;
 		this.ects = ects;
@@ -131,7 +131,7 @@ public class Oferta {
 	 *            the disciplina to set
 	 ***********************************************************/
 	public void setDisciplina(Disciplina disciplina) {
-		assert disciplina != null: "Invalid disciplina";
+		assert disciplina != null : "Invalid disciplina";
 		this.disciplina = disciplina;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
@@ -151,7 +151,7 @@ public class Oferta {
 	 *            the ects to set
 	 ***********************************************************/
 	public void setEcts(int ects) {
-		assert ects >= 0 :"Invalid ects";
+		assert ects >= 0 : "Invalid ects";
 		this.ects = ects;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
@@ -171,7 +171,7 @@ public class Oferta {
 	 *            the ano to set
 	 ***********************************************************/
 	public void setAno(int ano) {
-		assert ano > 0: "Invalid ano";
+		assert ano > 0 : "Invalid ano";
 		this.ano = ano;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
@@ -197,7 +197,7 @@ public class Oferta {
 	 *            the vagas to set
 	 ***********************************************************/
 	public void setVagas(int vagas) {
-		assert vagas >= 0: "Invalid vagas";
+		assert vagas >= 0 : "Invalid vagas";
 		this.vagas = vagas;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
