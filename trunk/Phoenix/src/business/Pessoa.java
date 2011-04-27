@@ -77,6 +77,7 @@ public abstract class Pessoa {
 		assert nome != null && nome.length() > 0 : "Invalid nome -> " + nome;
 		this.nome = nome;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
+		
 	}
 
 	/***********************************************************

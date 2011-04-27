@@ -20,8 +20,8 @@ public class Matricula {
 
 	CalendarDate dataInscricao;
 	Boolean paga = false;
-	
-	private boolean checkInvariants(){
+
+	private boolean checkInvariants() {
 		return aluno != null && perfil != null && dataInscricao != null;
 	}
 
@@ -55,17 +55,16 @@ public class Matricula {
 	 ***********************************************************/
 	public Matricula(Aluno aluno, Perfil perfil, CalendarDate dataInscricao) {
 		assert aluno != null : "Invalid aluno";
-		assert perfil != null: "Invalid perfil";
-		assert dataInscricao != null: "Invalid dataInscricao";
-		
+		assert perfil != null : "Invalid perfil";
+		assert dataInscricao != null : "Invalid dataInscricao";
+
 		this.aluno = aluno;
 		this.perfil = perfil;
 		this.dataInscricao = dataInscricao;
-		
+
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 		matriculas.add(this);
 	}
-	
 
 	/***********************************************************
 	 * @return the aluno
@@ -110,7 +109,7 @@ public class Matricula {
 	 *            the perfil to set
 	 ***********************************************************/
 	public void setPerfil(Perfil perfil) {
-		assert perfil != null: "Invalid perfil";
+		assert perfil != null : "Invalid perfil";
 		this.perfil = perfil;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}

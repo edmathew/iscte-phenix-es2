@@ -64,13 +64,13 @@ public class Inscricao {
 			CalendarDate dataInscricao, CalendarDate dataResultado,
 			int resultado) {
 		assert aluno != null : "Invalid aluno";
-		assert disciplina != null: "Invalid disciplina";
-		assert dataInscricao != null: "Invalid dataInscricao";
-		if(dataResultado != null){
-			assert dataResultado.isAfter(dataInscricao): "Invalid dataResultado";
-			assert resultado >= 0: "Invalid resultado";
+		assert disciplina != null : "Invalid disciplina";
+		assert dataInscricao != null : "Invalid dataInscricao";
+		if (dataResultado != null) {
+			assert dataResultado.isAfter(dataInscricao) : "Invalid dataResultado";
+			assert resultado >= 0 : "Invalid resultado";
 		}
-		
+
 		this.aluno = aluno;
 		this.disciplina = disciplina;
 		this.dataInscricao = dataInscricao;
@@ -121,7 +121,7 @@ public class Inscricao {
 	 *            the aluno to set
 	 ***********************************************************/
 	public void setAluno(Aluno aluno) {
-		assert aluno != null: "Invalid aluno";
+		assert aluno != null : "Invalid aluno";
 		this.aluno = aluno;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
@@ -131,7 +131,7 @@ public class Inscricao {
 	 *            the disciplina to set
 	 ***********************************************************/
 	public void setDisciplina(Disciplina disciplina) {
-		assert disciplina != null: "Invalid disciplina";
+		assert disciplina != null : "Invalid disciplina";
 		this.disciplina = disciplina;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
@@ -141,7 +141,7 @@ public class Inscricao {
 	 *            the dataInscricao to set
 	 ***********************************************************/
 	public void setDataInscricao(CalendarDate dataInscricao) {
-		assert dataInscricao != null: "Invalid dataIncricao";
+		assert dataInscricao != null : "Invalid dataIncricao";
 		this.dataInscricao = dataInscricao;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
@@ -151,7 +151,7 @@ public class Inscricao {
 	 *            the dataResultado to set
 	 ***********************************************************/
 	public void setDataResultado(CalendarDate dataResultado) {
-		assert dataResultado != null && dataResultado.isAfter(dataInscricao): "Invalid dataResultado";
+		assert dataResultado != null && dataResultado.isAfter(dataInscricao) : "Invalid dataResultado";
 		this.dataResultado = dataResultado;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}

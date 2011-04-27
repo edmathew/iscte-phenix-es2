@@ -225,11 +225,11 @@ public class Professor extends Pessoa {
 		assert a.disciplinas().contains(a) : "O aluno nao esta inscrito na disciplina";
 		assert !a.notaLancada(d) : "A nota do aluno ja esta lancada";
 		assert leccionadas().contains(d) : "O professor nao lecciona a disciplina";
-		
-		for(Inscricao i: a.inscricoes())
-			if(i.getDisciplina() == d)
+
+		for (Inscricao i : a.inscricoes())
+			if (i.getDisciplina() == d)
 				i.setResultado(nota);
-		
+
 		assert a.notaLancada(d) : "A nota deveria estar lancada";
 	}
 
