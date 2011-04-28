@@ -22,7 +22,19 @@ public class Matricula {
 	Boolean paga = false;
 
 	private boolean checkInvariants() {
-		return aluno != null && perfil != null && dataInscricao != null;
+		return checkInvariant_Aluno() && checkInvariant_Data() && checkInvariant_Perfil();
+	}
+
+	private boolean checkInvariant_Aluno() {
+		return aluno != null;
+	}
+
+	private boolean checkInvariant_Perfil() {
+		return perfil != null;
+	}
+
+	private boolean checkInvariant_Data() {
+		return dataInscricao != null;
 	}
 
 	/***********************************************************
@@ -44,7 +56,6 @@ public class Matricula {
      ***********************************************************/
 	public Matricula() {
 		super();
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 		matriculas.add(this);
 	}
 
@@ -101,7 +112,7 @@ public class Matricula {
 	public void setAluno(Aluno aluno) {
 		assert aluno != null : "Invalid aluno";
 		this.aluno = aluno;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Aluno() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -111,7 +122,7 @@ public class Matricula {
 	public void setPerfil(Perfil perfil) {
 		assert perfil != null : "Invalid perfil";
 		this.perfil = perfil;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Perfil() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -121,7 +132,7 @@ public class Matricula {
 	public void setDataInscricao(CalendarDate dataInscricao) {
 		assert dataInscricao != null : "Invalid dataInscricao";
 		this.dataInscricao = dataInscricao;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Data() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -139,11 +150,6 @@ public class Matricula {
 		paga = true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Matricula [aluno=" + aluno.getNumero() + ", perfil="

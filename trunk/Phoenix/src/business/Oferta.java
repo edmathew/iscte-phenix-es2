@@ -29,8 +29,33 @@ public class Oferta {
 	private int vagas;
 
 	private boolean checkInvariants() {
-		return disciplina != null && perfil != null && ects >= 0
-				&& semestre != null && ano > 0 && vagas >= 0;
+		return checkInvariant_Ano() && checkInvariant_Disciplina()
+				&& checkInvariant_Ects() && checkInvariant_Perfil()
+				&& checkInvariant_Semestre() && checkInvariant_Vagas();
+	}
+
+	private boolean checkInvariant_Disciplina() {
+		return disciplina != null;
+	}
+
+	private boolean checkInvariant_Perfil() {
+		return perfil != null;
+	}
+
+	private boolean checkInvariant_Ects() {
+		return ects >= 0;
+	}
+
+	private boolean checkInvariant_Semestre() {
+		return semestre != null;
+	}
+
+	private boolean checkInvariant_Ano() {
+		return ano > 0;
+	}
+
+	private boolean checkInvariant_Vagas() {
+		return vagas >= 0;
 	}
 
 	/***********************************************************
@@ -52,8 +77,6 @@ public class Oferta {
      ***********************************************************/
 	public Oferta() {
 		super();
-
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 		ofertas.add(this);
 	}
 
@@ -133,7 +156,7 @@ public class Oferta {
 	public void setDisciplina(Disciplina disciplina) {
 		assert disciplina != null : "Invalid disciplina";
 		this.disciplina = disciplina;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Disciplina() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -143,7 +166,7 @@ public class Oferta {
 	public void setPerfil(Perfil perfil) {
 		assert perfil != null;
 		this.perfil = perfil;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Perfil() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -153,7 +176,7 @@ public class Oferta {
 	public void setEcts(int ects) {
 		assert ects >= 0 : "Invalid ects";
 		this.ects = ects;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Ects() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -163,7 +186,7 @@ public class Oferta {
 	public void setSemestre(Semestre semestre) {
 		assert semestre != null : "Invalid semestre";
 		this.semestre = semestre;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Semestre() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -173,7 +196,7 @@ public class Oferta {
 	public void setAno(int ano) {
 		assert ano > 0 : "Invalid ano";
 		this.ano = ano;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Ano() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -182,7 +205,6 @@ public class Oferta {
 	 ***********************************************************/
 	public void setObrigatoria(boolean obrigatoria) {
 		this.obrigatoria = obrigatoria;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -199,14 +221,9 @@ public class Oferta {
 	public void setVagas(int vagas) {
 		assert vagas >= 0 : "Invalid vagas";
 		this.vagas = vagas;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Vagas() : "Class Invariant isn't satisfied";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Oferta [disciplina=" + disciplina.getNome() + ", perfil="

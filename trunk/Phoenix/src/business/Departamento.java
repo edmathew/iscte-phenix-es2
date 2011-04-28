@@ -52,7 +52,6 @@ public class Departamento {
       ***********************************************************/
 	public Departamento() {
 		super();
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 		departamentos.add(this);
 	}
 

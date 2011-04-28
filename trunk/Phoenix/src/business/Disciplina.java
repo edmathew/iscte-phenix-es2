@@ -23,9 +23,30 @@ public class Disciplina {
 	private Set<Disciplina> precedentes = new HashSet<Disciplina>();
 
 	private boolean checkInvariants() {
-		return nome != null && nome.length() > 0 && regente != null
-				&& equipaDocente != null && equipaDocente.size() > 0
-				&& precedentes != null;
+		return checkInvariant_Nome() && checkInvariant_Regente()
+				&& checkInvariant_EquipaDocente()
+				&& checkInvariant_Precedentes()
+				&& checkInvariant_AreaCientifica();
+	}
+
+	private boolean checkInvariant_Nome() {
+		return nome != null && nome.length() > 0;
+	}
+
+	private boolean checkInvariant_Regente() {
+		return regente != null;
+	}
+
+	private boolean checkInvariant_EquipaDocente() {
+		return equipaDocente != null && equipaDocente.size() > 0;
+	}
+
+	private boolean checkInvariant_Precedentes() {
+		return precedentes != null;
+	}
+
+	private boolean checkInvariant_AreaCientifica() {
+		return areaCientifica != null;
 	}
 
 	/***********************************************************
@@ -100,7 +121,6 @@ public class Disciplina {
        ***********************************************************/
 	public Disciplina() {
 		super();
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 		disciplinas.add(this);
 	}
 
@@ -144,7 +164,7 @@ public class Disciplina {
 	public void setNome(String nome) {
 		assert nome != null && nome.length() > 0 : "Invalid nome";
 		this.nome = nome;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Nome() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -172,7 +192,7 @@ public class Disciplina {
 	public void addPrecedentes(Disciplina d) {
 		assert d != null : "Invalid disciplina";
 		this.precedentes.add(d);
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Precedentes() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -203,7 +223,7 @@ public class Disciplina {
 	public void setAreaCientifica(AreaCientifica areaCientifica) {
 		assert areaCientifica != null : "Invalid areaCientifica";
 		this.areaCientifica = areaCientifica;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_AreaCientifica() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -213,20 +233,15 @@ public class Disciplina {
 	public void setRegente(Professor regente) {
 		assert regente != null : "Invalid regente";
 		this.regente = regente;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Regente() : "Class Invariant isn't satisfied";
 	}
 
 	public void addEquipaDocente(Professor p) {
 		assert p != null : "Invalid professor";
 		this.equipaDocente.add(p);
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_EquipaDocente(): "Class Invariant isn't satisfied";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Disciplina [nome=" + nome + ", areaCientifica="

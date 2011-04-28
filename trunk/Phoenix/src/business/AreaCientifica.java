@@ -53,7 +53,6 @@ public class AreaCientifica {
       ***********************************************************/
 	public AreaCientifica() {
 		super();
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 		areasCientificas.add(this);
 	}
 

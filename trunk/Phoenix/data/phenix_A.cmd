@@ -40,7 +40,7 @@
 !set ES.nome := 'Engenharia de Software'
 
 !create A1InEs: Inscricao between (A1, ES)
-!set A1InEs.dataInscricao := A1InEsDate
+--!set A1InEs.dataInscricao := A1InEsDate
 
 !create lei : Curso
 !set lei.nome := 'Engenharia Informatica'

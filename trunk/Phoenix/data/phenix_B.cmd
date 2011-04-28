@@ -38,8 +38,8 @@
 !create A1 : Aluno
 !set A1.nome := 'Aluno 1'
 !set A1.email := 'a1@iscte.pt'
-!set A1.dataNascimento := A1Date
-!set A1.numero := 0
+--!set A1.dataNascimento := A1Date
+!set A1.numero := 1
 
 !create ES : Disciplina
 !set ES.nome := 'Engenharia de Software'
@@ -50,12 +50,12 @@
 !insert (ES,ES2) into Disciplina_Disciplina
 
 !create A1InEs : Inscricao between (A1, ES)
-!set A1InEs.dataInscricao := A1InEsDate
+--!set A1InEs.dataInscricao := A1InEsDate
 !set A1InEs.resultado := 15
 --!set A1InEs.dataResultado := A1InEsResDate
 
 !create A2InEs: Inscricao between (A1, ES2)
-!set A2InEs.dataInscricao := A1InEsResDate
+--!set A2InEs.dataInscricao := A1InEsResDate
 
 !create lei : Curso
 !set lei.nome := 'Engenharia Informatica'
@@ -74,7 +74,7 @@
 !create prof1: Professor
 !set prof1.nome := 'Professor 1'
 !set prof1.email := 'prof1@iscte.pt'
-!set prof1.dataNascimento := Prof1Date
+--!set prof1.dataNascimento := Prof1Date
 --!set prof1.nivel := Categoria::assistente
 --!set prof1.grau := GrauAcademico::agregado
 

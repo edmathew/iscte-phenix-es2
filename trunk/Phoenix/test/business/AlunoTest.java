@@ -1,19 +1,79 @@
 package business;
 
-import junit.framework.TestCase;
-
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runners.model.TestClass;
 
-public class AlunoTest extends TestClass{
+public class AlunoTest {
 
-	public AlunoTest(Class<?> klass) {
-		super(klass);
-		// TODO Auto-generated constructor stub
+	
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		Inicial.open("data/phenix_B.cmd");
 	}
 
-	@Test(expected=AssertionError.class)
-	public void test1(){
-		Aluno a = new Aluno(null, null, "someMail", -1);
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		Inicial.reset();
 	}
+
+	@Test
+	public void testFuncoesConsulta() {
+		for (Aluno al : Aluno.objectos()) {
+			al.aprovadas();
+			al.disciplinas();
+			al.matriculas();
+			al.perfis();
+			al.getNome();
+			al.getDataNascimento();
+			al.getEmail();
+			al.getNumero();
+			al.toString();
+			al.getMessageSystem();
+		}
+	}
+
+	@Test
+	public void testSetNumero_1() {
+		Aluno a = new Aluno("Aluno1", new CalendarDate(), "mail@mail.com", 25);
+		a.setNumero(2048);
+		a.getNumero();
+	}
+
+	@Test
+	public void testCreditosObtidos_AND_inscritoNoCurso() {
+		for (Aluno a : Aluno.objectos())
+			for (Curso c : Curso.objectos())
+				if (a.inscritoNoCurso(c))
+					a.creditosObtidos(c);
+	}
+
+	@Test
+	public void testNotaLancada_AND_nota() {
+		for (Aluno a : Aluno.objectos())
+			for (Disciplina d : Disciplina.objectos())
+				if (a.notaLancada(d))
+					a.nota(d);
+	}
+
+
+	@Test
+	public void testSetDataNascimento() {
+		CalendarDate d = new CalendarDate(25, 4, 1974);
+		for (Aluno a : Aluno.objectos())
+			a.setDataNascimento(d);
+	}
+
+	@Test
+	public void testSetEmail() {
+		for (Aluno a : Aluno.objectos())
+			a.setEmail(a.getNome() + "@mail.com");
+	}
+
+	@Test
+	public void testIdade() {
+		for (Aluno a : Aluno.objectos())
+			a.idade();
+	}
+
 }
