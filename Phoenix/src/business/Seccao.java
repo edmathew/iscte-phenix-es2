@@ -19,7 +19,15 @@ public class Seccao {
 	private Departamento departamento;
 
 	private boolean checkInvariants() {
-		return nome != null && nome.length() > 0 && departamento != null;
+		return checkInvariant_Departamento() && checkInvariant_Nome();
+	}
+
+	private boolean checkInvariant_Nome() {
+		return nome != null && nome.length() > 0;
+	}
+
+	private boolean checkInvariant_Departamento() {
+		return departamento != null;
 	}
 
 	/***********************************************************
@@ -41,7 +49,6 @@ public class Seccao {
      ***********************************************************/
 	public Seccao() {
 		super();
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 		seccoes.add(this);
 	}
 
@@ -74,7 +81,7 @@ public class Seccao {
 	public void setNome(String nome) {
 		assert nome != null && nome.length() > 0;
 		this.nome = nome;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Nome() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -91,14 +98,9 @@ public class Seccao {
 	public void setDepartamento(Departamento departamento) {
 		assert departamento != null : "Invalid departamento";
 		this.departamento = departamento;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Departamento() : "Class Invariant isn't satisfied";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Seccao [nome=" + nome + ", departamento="

@@ -22,9 +22,30 @@ public class Curso {
 	private Set<Professor> comissaoCientifica = new HashSet<Professor>();
 
 	private boolean checkInvariants() {
-		return nome != null && nome.length() > 0 && numerusClausus >= 0
-				&& coordenador != null && coordenadorErasmus != null
-				&& comissaoCientifica != null;
+		return checkInvariant_Nome() && checkInvariant_NumerusClausus()
+				&& checkInvariant_Coordenador()
+				&& checkInvariant_CoordenadorErasmus()
+				&& checkInvariant_ComissaoCientifica();
+	}
+
+	private boolean checkInvariant_Nome() {
+		return nome != null && nome.length() > 0;
+	}
+
+	private boolean checkInvariant_NumerusClausus() {
+		return numerusClausus >= 0;
+	}
+
+	private boolean checkInvariant_Coordenador() {
+		return coordenador != null;
+	}
+
+	private boolean checkInvariant_CoordenadorErasmus() {
+		return coordenadorErasmus != null;
+	}
+
+	private boolean checkInvariant_ComissaoCientifica() {
+		return comissaoCientifica != null;
 	}
 
 	/***********************************************************
@@ -57,7 +78,6 @@ public class Curso {
       ***********************************************************/
 	public Curso() {
 		super();
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 		cursos.add(this);
 	}
 
@@ -107,7 +127,7 @@ public class Curso {
 	public void setNome(String nome) {
 		assert nome != null && nome.length() > 0 : "Invalid nome";
 		this.nome = nome;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Nome() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -117,7 +137,7 @@ public class Curso {
 	public void setNumerusClausus(int numerusClausus) {
 		assert numerusClausus >= 0 : "Invalid numerusClausus";
 		this.numerusClausus = numerusClausus;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_NumerusClausus() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -148,7 +168,7 @@ public class Curso {
 	public void setCoordenador(Professor coordenador) {
 		assert coordenador != null : "Invalid coordenador";
 		this.coordenador = coordenador;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Coordenador() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -158,7 +178,7 @@ public class Curso {
 	public void setCoordenadorErasmus(Professor coordenadorErasmus) {
 		assert coordenadorErasmus != null : "Invalid coordenadorErasmus";
 		this.coordenadorErasmus = coordenadorErasmus;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_CoordenadorErasmus() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -167,14 +187,9 @@ public class Curso {
 	public void addComissaoCientifica(Professor p) {
 		assert p != null : "Invalid professor";
 		this.comissaoCientifica.add(p);
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_ComissaoCientifica() : "Class Invariant isn't satisfied";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Curso [nome=" + nome + ", numerusClausus=" + numerusClausus

@@ -1,5 +1,6 @@
 package business;
 
+import decorators.ConcreteMessageSystem;
 import decorators.MessageSystem;
 
 /***********************************************************
@@ -16,20 +17,30 @@ public abstract class Pessoa {
 	private String nome;
 	private CalendarDate dataNascimento;
 	private String email;
-	private MessageSystem messageSystem = new MessageSystem();
+	private MessageSystem messageSystem = new ConcreteMessageSystem();
 
 	/** Invariante da classe. */
 	private boolean checkInvariants() {
-		return nome != null && nome.length() > 0 && dataNascimento != null
-				&& idade() > 0 && email != null && email.length() > 0;
+		return checkInvariant_DataNascimento() && checkInvariant_Email() && checkInvariant_Nome();
 	}
 
+	private boolean checkInvariant_Nome(){
+		return nome != null && nome.length() > 0;
+	}
+	
+	private boolean checkInvariant_DataNascimento(){
+		return dataNascimento != null && idade() > 0;
+	}
+	
+	private boolean checkInvariant_Email(){
+		return email != null && email.length() > 0;
+	}
+	
+	
 	/***********************************************************
      * 
      ***********************************************************/
 	public Pessoa() {
-		super();
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -79,8 +90,8 @@ public abstract class Pessoa {
 	public void setNome(String nome) {
 		assert nome != null && nome.length() > 0 : "Invalid nome -> " + nome;
 		this.nome = nome;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
-		
+		assert checkInvariant_Nome() : "Class Invariant isn't satisfied";
+
 	}
 
 	/***********************************************************
@@ -92,7 +103,7 @@ public abstract class Pessoa {
 				&& dataNascimento.isBefore(CalendarDate.today()) : "Invalid dataNascimento -> "
 				+ dataNascimento;
 		this.dataNascimento = dataNascimento;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_DataNascimento() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -102,7 +113,7 @@ public abstract class Pessoa {
 	public void setEmail(String email) {
 		assert email != null && email.length() > 0 : "Invalid Email ->" + email;
 		this.email = email;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Email(): "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -114,7 +125,7 @@ public abstract class Pessoa {
 		assert idade > 0 : "Invalid result: " + idade + " <= 0";
 		return idade;
 	}
-	
+
 	public MessageSystem getMessageSystem() {
 		return messageSystem;
 	}

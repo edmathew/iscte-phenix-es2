@@ -31,8 +31,29 @@ public class Professor extends Pessoa {
 
 	/** Invariante da classe. */
 	private boolean checkInvariants() {
-		return grau != null && nivel != null && extensao > 0
-				&& gabinete != null && gabinete.length() != 0 && seccao != null;
+		return checkInvariant_Extensao() && checkInvariant_Gabinete()
+				&& checkInvariant_Grau() && checkInvariant_Nivel()
+				&& checkInvariant_Seccao();
+	}
+
+	private boolean checkInvariant_Grau() {
+		return grau != null;
+	}
+
+	private boolean checkInvariant_Nivel() {
+		return nivel != null;
+	}
+
+	private boolean checkInvariant_Extensao() {
+		return extensao > 0;
+	}
+
+	private boolean checkInvariant_Gabinete() {
+		return gabinete != null && gabinete.length() > 0;
+	}
+
+	private boolean checkInvariant_Seccao() {
+		return seccao != null;
 	}
 
 	/***********************************************************
@@ -109,7 +130,6 @@ public class Professor extends Pessoa {
      ***********************************************************/
 	public Professor() {
 		super();
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 		professores.add(this);
 	}
 
@@ -179,7 +199,7 @@ public class Professor extends Pessoa {
 	public void setGrau(GrauAcademico grau) {
 		assert grau != null : "Invalid grau -> " + grau;
 		this.grau = grau;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Grau(): "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -189,7 +209,7 @@ public class Professor extends Pessoa {
 	public void setNivel(Categoria nivel) {
 		assert nivel != null : "Invalid nivel -> " + nivel;
 		this.nivel = nivel;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Nivel() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -199,7 +219,7 @@ public class Professor extends Pessoa {
 	public void setExtensao(int extensao) {
 		assert extensao > 0 : "Invalid extensao -> " + extensao;
 		this.extensao = extensao;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Extensao() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -210,7 +230,7 @@ public class Professor extends Pessoa {
 		assert gabinete != null && gabinete.length() > 0 : "Invalid gabinete -> "
 				+ gabinete;
 		this.gabinete = gabinete;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Gabinete() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -247,14 +267,9 @@ public class Professor extends Pessoa {
 	public void setSeccao(Seccao seccao) {
 		assert seccao != null : "Invalid seccao -> " + seccao;
 		this.seccao = seccao;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Seccao() : "Class Invariant isn't satisfied";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Professor [grau=" + grau + ", nivel=" + nivel + ", extensao="

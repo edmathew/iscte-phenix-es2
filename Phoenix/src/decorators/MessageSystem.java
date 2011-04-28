@@ -1,32 +1,32 @@
 package decorators;
 
-import java.util.LinkedList;
-
 import business.Pessoa;
 
 /**
- * Implementação de um sistema de mensagens para pessoas registadas no sistema.
+ * Interface para um sistema de mensagens, utilizando o <i>Pattern
+ * Decorator</i>.
  * 
  * @author Edgar Mateus
  * @author Tiago Amaral
- * 
  */
-public class MessageSystem implements MessageDecorator {
-	
-	private LinkedList<String> mensagens;
-	
-	public MessageSystem(){
-		mensagens = new LinkedList<String>();
-	}
-	
-	@Override
-	public void acceptMessage(String message){
-		mensagens.add(message);
-	}
+public interface MessageSystem {
 
-	@Override
-	public void sendMessage(Pessoa p, String message) {
-		p.getMessageSystem().acceptMessage(message);
-	}
+	/**
+	 * Envia uma mensagem para a pessoa indicada no argumento.
+	 * 
+	 * @param p
+	 *            Destinario da Mensagem.
+	 * 
+	 * @param message
+	 *            Mensagem a enviar.
+	 */
+	public void sendMessage(Pessoa p, String message);
 
+	/**
+	 * Adiciona a mensagem ao mecanismo de queue.
+	 * 
+	 * @param message
+	 *            Mensagem a receber.
+	 */
+	public void acceptMessage(String message);
 }

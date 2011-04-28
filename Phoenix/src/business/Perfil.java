@@ -21,7 +21,20 @@ public class Perfil {
 	private Curso curso;
 
 	private boolean checkInvariants() {
-		return nome != null && nome.length() > 0 && curso != null && ects >= 0;
+		return checkInvariant_Curso() && checkInvariant_Nome()
+				&& checkInvariant_Ects();
+	}
+
+	private boolean checkInvariant_Nome() {
+		return nome != null && nome.length() > 0;
+	}
+
+	private boolean checkInvariant_Curso() {
+		return curso != null;
+	}
+
+	private boolean checkInvariant_Ects() {
+		return ects >= 0;
 	}
 
 	/***********************************************************
@@ -85,7 +98,6 @@ public class Perfil {
        ***********************************************************/
 	public Perfil() {
 		super();
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 		perfis.add(this);
 	}
 
@@ -120,7 +132,7 @@ public class Perfil {
 	public void setNome(String nome) {
 		assert nome != null && nome.length() > 0;
 		this.nome = nome;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Nome() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -137,7 +149,7 @@ public class Perfil {
 	public void setEcts(int ects) {
 		assert ects >= 0 : "Invalid ects";
 		this.ects = ects;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Ects() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -167,14 +179,9 @@ public class Perfil {
 	public void setCurso(Curso curso) {
 		assert curso != null : "Invalid curso";
 		this.curso = curso;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Curso() : "Class Invariant isn't satisfied";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Perfil [nome=" + nome + ", ects=" + ects + ", curso="

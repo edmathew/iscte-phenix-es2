@@ -40,7 +40,6 @@ public class Aluno extends Pessoa {
     ***********************************************************/
 	public Aluno() {
 		super();
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 		alunos.add(this);
 	}
 
@@ -166,7 +165,6 @@ public class Aluno extends Pessoa {
 
 	public int nota(Disciplina d) {
 		assert d != null : "Invalid disciplina";
-		assert inscricoes().contains(d) : "O aluno nao esta inscrito";
 		for (Inscricao i : inscricoes())
 			if (i.getDisciplina() == d)
 				return i.getResultado();
@@ -174,23 +172,10 @@ public class Aluno extends Pessoa {
 		return -1;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Aluno [numero=" + numero + ", nome()=" + getNome()
 				+ ", email()=" + getEmail() + "]";
-		// return "Aluno [numero=" + numero + ", inscricoes()=" + inscricoes() +
-		// ", disciplinas()=" + disciplinas()
-		// + ", matriculas()=" + matriculas() + ", perfis()=" + perfis() +
-		// ", getNumero()=" + getNumero()
-		// + ", aprovadas()=" + aprovadas() + ", getNome()=" + getNome() +
-		// ", getDataNascimento()="
-		// + getDataNascimento() + ", getEmail()=" + getEmail() + ", idade()=" +
-		// idade() + "]";
 	}
 
 }

@@ -23,11 +23,32 @@ public class Inscricao {
 	private int resultado;
 
 	private boolean checkInvariants() {
-		return aluno != null
-				&& disciplina != null
-				&& dataInscricao != null
-				&& (dataResultado == null || (dataResultado != null
-						&& dataResultado.isAfter(dataInscricao) && resultado >= 0));
+		return checkInvariant_Aluno()
+				&& checkInvariant_DataInscricao()
+				&& checkInvariant_Disciplina()
+				&& (dataResultado == null || checkInvariant_DataResultadoDefined());
+		// return aluno != null
+		// && disciplina != null
+		// && dataInscricao != null
+		// && (dataResultado == null || (dataResultado != null
+		// && dataResultado.isAfter(dataInscricao) && resultado >= 0));
+	}
+
+	private boolean checkInvariant_Aluno() {
+		return aluno != null;
+	}
+
+	private boolean checkInvariant_Disciplina() {
+		return disciplina != null;
+	}
+
+	private boolean checkInvariant_DataInscricao() {
+		return dataInscricao != null;
+	}
+
+	private boolean checkInvariant_DataResultadoDefined() {
+		return dataResultado != null && dataResultado.isAfter(dataInscricao)
+				&& resultado >= 0;
 	}
 
 	/***********************************************************
@@ -49,7 +70,6 @@ public class Inscricao {
      ***********************************************************/
 	public Inscricao() {
 		super();
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 		inscricoes.add(this);
 	}
 
@@ -123,7 +143,7 @@ public class Inscricao {
 	public void setAluno(Aluno aluno) {
 		assert aluno != null : "Invalid aluno";
 		this.aluno = aluno;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Aluno() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -133,7 +153,7 @@ public class Inscricao {
 	public void setDisciplina(Disciplina disciplina) {
 		assert disciplina != null : "Invalid disciplina";
 		this.disciplina = disciplina;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_Disciplina() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -143,7 +163,7 @@ public class Inscricao {
 	public void setDataInscricao(CalendarDate dataInscricao) {
 		assert dataInscricao != null : "Invalid dataIncricao";
 		this.dataInscricao = dataInscricao;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_DataInscricao() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -153,7 +173,7 @@ public class Inscricao {
 	public void setDataResultado(CalendarDate dataResultado) {
 		assert dataResultado != null && dataResultado.isAfter(dataInscricao) : "Invalid dataResultado";
 		this.dataResultado = dataResultado;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
+		assert checkInvariant_DataResultadoDefined() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************
@@ -161,21 +181,14 @@ public class Inscricao {
 	 *            the resultado to set
 	 ***********************************************************/
 	public void setResultado(int resultado) {
-		assert dataResultado != null : "DataResultado not defined";
 		assert resultado >= 0;
 		this.resultado = resultado;
-		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
 
 	public boolean notaLancada() {
 		return dataResultado != null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Inscricao [aluno=" + aluno.getNumero() + ", disciplina="
