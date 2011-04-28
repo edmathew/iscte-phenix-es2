@@ -1,5 +1,7 @@
 package business;
 
+import decorators.MessageSystem;
+
 /***********************************************************
  * Filename: Pessoa.java
  * Created:  2009/10/20
@@ -14,6 +16,7 @@ public abstract class Pessoa {
 	private String nome;
 	private CalendarDate dataNascimento;
 	private String email;
+	private MessageSystem messageSystem = new MessageSystem();
 
 	/** Invariante da classe. */
 	private boolean checkInvariants() {
@@ -100,7 +103,6 @@ public abstract class Pessoa {
 		assert email != null && email.length() > 0 : "Invalid Email ->" + email;
 		this.email = email;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
-		;
 	}
 
 	/***********************************************************
@@ -111,5 +113,9 @@ public abstract class Pessoa {
 		int idade = CalendarDate.today().yearsSince(dataNascimento);
 		assert idade > 0 : "Invalid result: " + idade + " <= 0";
 		return idade;
+	}
+	
+	public MessageSystem getMessageSystem() {
+		return messageSystem;
 	}
 }
