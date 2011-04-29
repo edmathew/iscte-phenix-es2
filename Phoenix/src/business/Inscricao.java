@@ -27,11 +27,6 @@ public class Inscricao {
 				&& checkInvariant_DataInscricao()
 				&& checkInvariant_Disciplina()
 				&& (dataResultado == null || checkInvariant_DataResultadoDefined());
-		// return aluno != null
-		// && disciplina != null
-		// && dataInscricao != null
-		// && (dataResultado == null || (dataResultado != null
-		// && dataResultado.isAfter(dataInscricao) && resultado >= 0));
 	}
 
 	private boolean checkInvariant_Aluno() {
@@ -48,7 +43,7 @@ public class Inscricao {
 
 	private boolean checkInvariant_DataResultadoDefined() {
 		return dataResultado != null && dataResultado.isAfter(dataInscricao)
-				&& resultado >= 0;
+				&& resultado >= 0 && resultado <= 20;
 	}
 
 	/***********************************************************
@@ -181,7 +176,7 @@ public class Inscricao {
 	 *            the resultado to set
 	 ***********************************************************/
 	public void setResultado(int resultado) {
-		assert resultado >= 0;
+		assert resultado >= 0 && resultado <= 20;
 		this.resultado = resultado;
 	}
 

@@ -4,7 +4,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class AreaCientificaTest {
+public class DepartamentoTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -18,22 +18,22 @@ public class AreaCientificaTest {
 
 	@Test
 	public void testFuncoesConsulta() {
-		for (AreaCientifica a : AreaCientifica.objectos()) {
-			a.disciplinas();
-			a.getNome();
-			a.toString();
+		for (Departamento d : Departamento.objectos()) {
+			d.seccoes();
+			d.getNome();
+			d.toString();
 		}
 	}
 
 	@Test
-	public void testAreaCientificaString() {
-		new AreaCientifica("Economia");
+	public void testDepartamentoString() {
+		new Departamento("DepartamentoTest");
 	}
 
 	@Test
 	public void testSetNome() {
-		for (AreaCientifica a : AreaCientifica.objectos())
-			a.setNome(a.getNome() + "2011");
+		for (Departamento d : Departamento.objectos())
+			d.setNome("Verified " + d);
 	}
 
 }

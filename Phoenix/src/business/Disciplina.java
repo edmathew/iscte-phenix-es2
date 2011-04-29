@@ -239,7 +239,7 @@ public class Disciplina {
 	public void addEquipaDocente(Professor p) {
 		assert p != null : "Invalid professor";
 		this.equipaDocente.add(p);
-		assert checkInvariant_EquipaDocente(): "Class Invariant isn't satisfied";
+		assert checkInvariant_EquipaDocente() : "Class Invariant isn't satisfied";
 	}
 
 	@Override

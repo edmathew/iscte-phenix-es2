@@ -199,7 +199,7 @@ public class Professor extends Pessoa {
 	public void setGrau(GrauAcademico grau) {
 		assert grau != null : "Invalid grau -> " + grau;
 		this.grau = grau;
-		assert checkInvariant_Grau(): "Class Invariant isn't satisfied";
+		assert checkInvariant_Grau() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************

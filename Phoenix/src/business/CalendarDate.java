@@ -167,6 +167,7 @@ public class CalendarDate {
 	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
+	@Override
 	public boolean equals(Object obj) {
 		CalendarDate d = (CalendarDate) obj;
 		return day == d.day && month == d.month && year == d.year;
