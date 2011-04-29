@@ -22,7 +22,8 @@ public class Matricula {
 	Boolean paga = false;
 
 	private boolean checkInvariants() {
-		return checkInvariant_Aluno() && checkInvariant_Data() && checkInvariant_Perfil();
+		return checkInvariant_Aluno() && checkInvariant_Data()
+				&& checkInvariant_Perfil();
 	}
 
 	private boolean checkInvariant_Aluno() {

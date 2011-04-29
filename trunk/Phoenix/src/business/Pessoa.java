@@ -21,22 +21,22 @@ public abstract class Pessoa {
 
 	/** Invariante da classe. */
 	private boolean checkInvariants() {
-		return checkInvariant_DataNascimento() && checkInvariant_Email() && checkInvariant_Nome();
+		return checkInvariant_DataNascimento() && checkInvariant_Email()
+				&& checkInvariant_Nome();
 	}
 
-	private boolean checkInvariant_Nome(){
+	private boolean checkInvariant_Nome() {
 		return nome != null && nome.length() > 0;
 	}
-	
-	private boolean checkInvariant_DataNascimento(){
+
+	private boolean checkInvariant_DataNascimento() {
 		return dataNascimento != null && idade() > 0;
 	}
-	
-	private boolean checkInvariant_Email(){
+
+	private boolean checkInvariant_Email() {
 		return email != null && email.length() > 0;
 	}
-	
-	
+
 	/***********************************************************
      * 
      ***********************************************************/
@@ -113,7 +113,7 @@ public abstract class Pessoa {
 	public void setEmail(String email) {
 		assert email != null && email.length() > 0 : "Invalid Email ->" + email;
 		this.email = email;
-		assert checkInvariant_Email(): "Class Invariant isn't satisfied";
+		assert checkInvariant_Email() : "Class Invariant isn't satisfied";
 	}
 
 	/***********************************************************

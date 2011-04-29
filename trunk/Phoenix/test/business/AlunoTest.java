@@ -6,7 +6,6 @@ import org.junit.Test;
 
 public class AlunoTest {
 
-	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		Inicial.open("data/phenix_B.cmd");
@@ -55,7 +54,6 @@ public class AlunoTest {
 				if (a.notaLancada(d))
 					a.nota(d);
 	}
-
 
 	@Test
 	public void testSetDataNascimento() {

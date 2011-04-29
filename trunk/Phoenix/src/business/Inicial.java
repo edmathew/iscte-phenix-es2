@@ -4,16 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -97,12 +93,12 @@ public abstract class Inicial {
 					"Ficheiro de dados incorrecto ou corrompido!",
 					"Programa terminado!", JOptionPane.ERROR_MESSAGE);
 		} finally {
-//			Icon icon = new ImageIcon("images/Phoenix.jpg");
-//			JOptionPane
-//					.showMessageDialog(
-//							null,
-//							"Obrigado por ter escolhido a Phoenix!\nCopyright FBA, 2011",
-//							"Phoenix Reborn!", JOptionPane.PLAIN_MESSAGE, icon);
+			// Icon icon = new ImageIcon("images/Phoenix.jpg");
+			// JOptionPane
+			// .showMessageDialog(
+			// null,
+			// "Obrigado por ter escolhido a Phoenix!\nCopyright FBA, 2011",
+			// "Phoenix Reborn!", JOptionPane.PLAIN_MESSAGE, icon);
 		}
 	}
 

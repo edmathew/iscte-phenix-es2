@@ -157,12 +157,11 @@ public class Perfil {
 	 ***********************************************************/
 	public void efectuaMatricula(Aluno a) {
 		assert a != null : "Invalid aluno";
-		assert a.perfis().contains(this) : "O aluno já se encontra matriculado neste perfil";
+		assert !a.perfis().contains(this) : "O aluno já se encontra matriculado neste perfil";
 
 		Matricula.objectos().add(new Matricula(a, this, CalendarDate.today()));
 
 		assert a.perfis().contains(this) : "A operacao nao foi bem sucedida";
-
 	}
 
 	/***********************************************************

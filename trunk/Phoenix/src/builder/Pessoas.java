@@ -79,7 +79,7 @@ public abstract class Pessoas {
 		assert nome != null && nome.length() > 0 : "Invalid nome -> " + nome;
 		this.nome = nome;
 		assert checkInvariants() : "Class Invariant isn't satisfied";
-		
+
 	}
 
 	/***********************************************************
@@ -109,11 +109,12 @@ public abstract class Pessoas {
 	 * @return
 	 ***********************************************************/
 	public abstract int idade();
-	
+
 	public abstract boolean verificaMaiorIdade();
-	
+
 	@Override
 	public String toString() {
-		return "Nome " + getNome() + " Data de Nascimento " + getDataNascimento() + " email: " + getEmail();
+		return "Nome " + getNome() + " Data de Nascimento "
+				+ getDataNascimento() + " email: " + getEmail();
 	}
 }

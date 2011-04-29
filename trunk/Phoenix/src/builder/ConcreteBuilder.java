@@ -3,13 +3,15 @@ package builder;
 import business.CalendarDate;
 
 public class ConcreteBuilder extends Pessoas {
-	
+
 	public final static int idadeMaior = 18;
 
-	public ConcreteBuilder(String nome, CalendarDate dataNascimento, String email) {
+	public ConcreteBuilder(String nome, CalendarDate dataNascimento,
+			String email) {
 		super(nome, dataNascimento, email);
 	}
-	
+
+	@Override
 	public boolean verificaMaiorIdade() {
 		if (idade() >= idadeMaior)
 			return true;
