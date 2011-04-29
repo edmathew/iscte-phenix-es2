@@ -31,12 +31,40 @@ public class AlunoTest {
 			al.getMessageSystem();
 		}
 	}
+	
+	@Test (expected = AssertionError.class)
+	public void testAlunoNomeDateEmailNumero(){
+		new Aluno("A1", new CalendarDate(31,7,1990), "mail@mail.com", -1);
+	}
+	
 
+	@Test (expected = AssertionError.class)
+	public void testAlunoNomeDateEmailNumero_1(){
+		new Aluno("A1", new CalendarDate(31,7,1990), "mail@mail.com", 0);
+	}
+	
+	@Test
+	public void testAlunoNomeDateEmailNumero_2(){
+		new Aluno("A1", new CalendarDate(31,7,1990), "mail@mail.com", 3);
+	}
+	
 	@Test
 	public void testSetNumero_1() {
 		Aluno a = new Aluno("Aluno1", new CalendarDate(), "mail@mail.com", 25);
 		a.setNumero(2048);
 		a.getNumero();
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testSetNumero_2() {
+		Aluno a = new Aluno("Aluno1", new CalendarDate(), "mail@mail.com", 25);
+		a.setNumero(-1);
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testSetNumero_3() {
+		Aluno a = new Aluno("Aluno1", new CalendarDate(), "mail@mail.com", 25);
+		a.setNumero(0);
 	}
 
 	@Test
@@ -70,8 +98,39 @@ public class AlunoTest {
 
 	@Test
 	public void testIdade() {
-		for (Aluno a : Aluno.objectos())
-			a.idade();
+		Aluno a = new Aluno("Ed", new CalendarDate(31,7,1990),"ed@mail.com" ,201782);
+		a.idade();
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testNota(){
+		new Aluno().nota(null);
 	}
 
+	@Test
+	public void testNota_1(){
+		for(Disciplina d: Disciplina.objectos())
+			new Aluno().nota(d);
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testInscritoNoCursoNull(){
+		new Aluno().inscritoNoCurso(null);
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testNotaLancadaNull(){
+		new Aluno().notaLancada(null);
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testCreditosObtidos(){
+		new Aluno().creditosObtidos(null);
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testCreditosObtidos_1(){
+		for(Curso c: Curso.objectos())
+			new Aluno().creditosObtidos(c);
+	}
 }

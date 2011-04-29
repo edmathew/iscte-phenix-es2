@@ -75,8 +75,8 @@
 !set prof1.nome := 'Professor 1'
 !set prof1.email := 'prof1@iscte.pt'
 --!set prof1.dataNascimento := Prof1Date
---!set prof1.nivel := Categoria::assistente
---!set prof1.grau := GrauAcademico::agregado
+!set prof1.nivel := #assistente
+!set prof1.grau := #agregado
 
 !insert (prof1,ES) into Professor_Docencia
 !insert (prof1,ES) into Professor_Regencia

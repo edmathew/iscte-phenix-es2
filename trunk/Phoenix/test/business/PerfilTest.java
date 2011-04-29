@@ -27,6 +27,7 @@ public class PerfilTest {
 			p.alunos();
 			p.disciplinas();
 			p.ofertas();
+			p.getEcts();
 		}
 	}
 
@@ -35,9 +36,29 @@ public class PerfilTest {
 		perfil = new Perfil("P1", 60, new Curso());
 	}
 
+	@Test(expected = AssertionError.class)
+	public void testPerfilNomeEctsCurso_1() {
+		new Perfil(null, 0, null);
+	}
+
+	@Test(expected = AssertionError.class)
+	public void testPerfilNomeEctsCurso_2() {
+		new Perfil("Pds", -1, null);
+	}
+
+	@Test(expected = AssertionError.class)
+	public void testPerfilNomeEctsCurso_3() {
+		new Perfil("Pds", 8, null);
+	}
+
 	@Test
 	public void testSetEcts() {
 		perfil.setEcts(40);
+	}
+
+	@Test(expected = AssertionError.class)
+	public void testSetEcts_1() {
+		perfil.setEcts(-1);
 	}
 
 	@Test
@@ -46,6 +67,20 @@ public class PerfilTest {
 			if (!a.perfis().contains(perfil))
 				perfil.efectuaMatricula(a);
 	}
+	
+	@Test (expected = AssertionError.class)
+	public void testEfectuaMatricula_1(){
+		perfil.efectuaMatricula(null);
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testEfectuaMatricula_2(){
+		for (Aluno a : Aluno.objectos())
+			if (a.perfis().contains(perfil))
+				perfil.efectuaMatricula(a);
+	}
+	
+	
 
 	@Test
 	public void testSetCurso() {
@@ -54,9 +89,19 @@ public class PerfilTest {
 		perfil.setCurso(c);
 		perfil.toString();
 	}
-	
+
+	@Test(expected = AssertionError.class)
+	public void testSetCurso_1() {
+		new Perfil().setCurso(null);
+	}
+
 	@Test
 	public void testSetNome() {
 		perfil.setNome("Perfil 1");
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testSetNome_1(){
+		new Perfil().setNome(null);
 	}
 }

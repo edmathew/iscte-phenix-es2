@@ -84,11 +84,6 @@ public class Departamento {
 		assert checkInvariants() : "Class Invariant isn't satisfied";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Departamento [nome=" + nome + "]";

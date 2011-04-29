@@ -30,12 +30,6 @@ public class CalendarDateTest {
 	}
 
 	@Test
-	public void testFuncoesConsulta() {
-		d1 = CalendarDate.today();
-		d1.equals(d3);
-	}
-
-	@Test
 	public void testGets_AND_Sets() {
 		int aux = d1.getDay();
 		d1.setDay(d2.getDay());
@@ -58,7 +52,14 @@ public class CalendarDateTest {
 		d1.isBefore(d2);
 		d2.isBefore(d3);
 		d3.isBefore(d1);
+		
+		CalendarDate.today().isBefore(new CalendarDate(30,4,2011));
+		CalendarDate.today().isBefore(new CalendarDate(27,5,2011));
+		CalendarDate.today().isBefore(new CalendarDate(30,3,2011));
+		
 	}
+	
+	
 
 	@Test
 	public void testIsAfter() {
@@ -83,5 +84,23 @@ public class CalendarDateTest {
 	@Test
 	public void testYearsTo() {
 		d1.yearsTo(d2);
+	}
+	
+	@Test
+	public void testEquals(){
+		CalendarDate.today().equals(CalendarDate.today());
+		CalendarDate.today().equals(new CalendarDate(31, 7, 1990));
+	}
+	
+	@Test
+	public void testToString(){
+		d1.toString();
+		d2.toString();
+		d3.toString();
+	}
+	
+	@Test
+	public void testClone(){
+		d1.clone();
 	}
 }
