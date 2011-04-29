@@ -29,11 +29,21 @@ public class DepartamentoTest {
 	public void testDepartamentoString() {
 		new Departamento("DepartamentoTest");
 	}
-
+	
+	@Test(expected = AssertionError.class)
+	public void testDepartamentoString_1() {
+		new Departamento(null);
+	}
+	
 	@Test
 	public void testSetNome() {
 		for (Departamento d : Departamento.objectos())
 			d.setNome("Verified " + d);
 	}
 
+	@Test (expected = AssertionError.class)
+	public void testSetNome_1() {
+		for (Departamento d : Departamento.objectos())
+			d.setNome(null);
+	}
 }

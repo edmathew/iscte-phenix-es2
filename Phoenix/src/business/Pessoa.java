@@ -51,8 +51,7 @@ public abstract class Pessoa {
 	public Pessoa(String nome, CalendarDate dataNascimento, String email) {
 		assert nome != null && nome.length() > 0 : "Invalid nome -> " + nome;
 		assert dataNascimento != null
-				&& dataNascimento.isBefore(CalendarDate.today()) : "Invalid dataNascimento -> "
-				+ dataNascimento;
+				&& dataNascimento.isBefore(CalendarDate.today()) : "Invalid dataNascimento";
 		assert email != null && email.length() > 0 : "Invalid Email->" + email;
 
 		this.nome = nome;
@@ -100,8 +99,7 @@ public abstract class Pessoa {
 	 ***********************************************************/
 	public void setDataNascimento(CalendarDate dataNascimento) {
 		assert dataNascimento != null
-				&& dataNascimento.isBefore(CalendarDate.today()) : "Invalid dataNascimento -> "
-				+ dataNascimento;
+				&& dataNascimento.isBefore(CalendarDate.today()) : "Invalid dataNascimento";
 		this.dataNascimento = dataNascimento;
 		assert checkInvariant_DataNascimento() : "Class Invariant isn't satisfied";
 	}

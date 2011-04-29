@@ -22,7 +22,8 @@ public class Curso {
 	private Set<Professor> comissaoCientifica = new HashSet<Professor>();
 
 	private boolean checkInvariants() {
-		return checkInvariant_Nome() && checkInvariant_NumerusClausus()
+		return checkInvariant_Nome() && 
+		checkInvariant_NumerusClausus()
 				&& checkInvariant_Coordenador()
 				&& checkInvariant_CoordenadorErasmus()
 				&& checkInvariant_ComissaoCientifica();

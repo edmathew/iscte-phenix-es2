@@ -1,7 +1,5 @@
 package business;
 
-import static org.junit.Assert.*;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -34,6 +32,7 @@ public class ProfessorTest {
 			f.getGrau();
 			f.getNivel();
 			f.getExtensao();
+			f.toString();
 		}
 	}
 
@@ -66,27 +65,19 @@ public class ProfessorTest {
 
 	@Test
 	public void testLancaResultado() {
-		for(Disciplina d: Disciplina.objectos()){
+		for (Disciplina d : Disciplina.objectos()) {
 			d.addEquipaDocente(f);
-			for(Aluno a: d.alunos())
-				f.lancaResultado(d, a, (int)Math.random()*20);
+			for (Aluno a : d.alunos()) {
+				if (a.inscricoes().contains(d))
+					f.lancaResultado(d, a, (int) Math.random() * 20);
+			}
 		}
-				
-	}
 
-	@Test
-	public void testGetSeccao() {
-		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetSeccao() {
-		fail("Not yet implemented");
+		for (Seccao s : Seccao.objectos())
+			f.setSeccao(s);
 	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
-
 }

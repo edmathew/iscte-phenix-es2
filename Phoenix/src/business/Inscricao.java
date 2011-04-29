@@ -42,8 +42,7 @@ public class Inscricao {
 	}
 
 	private boolean checkInvariant_DataResultadoDefined() {
-		return dataResultado != null && dataResultado.isAfter(dataInscricao)
-				&& resultado >= 0 && resultado <= 20;
+		return dataResultado != null && resultado >= 0 && resultado <= 20;
 	}
 
 	/***********************************************************
@@ -166,7 +165,7 @@ public class Inscricao {
 	 *            the dataResultado to set
 	 ***********************************************************/
 	public void setDataResultado(CalendarDate dataResultado) {
-		assert dataResultado != null && dataResultado.isAfter(dataInscricao) : "Invalid dataResultado";
+		assert dataResultado != null  : "Invalid dataResultado";
 		this.dataResultado = dataResultado;
 		assert checkInvariant_DataResultadoDefined() : "Class Invariant isn't satisfied";
 	}

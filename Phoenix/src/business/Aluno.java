@@ -131,7 +131,6 @@ public class Aluno extends Pessoa {
 					&& aprovadas().contains(o.getDisciplina()))
 				result += o.getEcts();
 
-		assert result >= 0 : "Result < 0";
 		return result;
 	}
 

@@ -33,6 +33,31 @@ public class CursoTest {
 		c = new Curso("Economia", 2, f, f, profs);
 	}
 
+	@Test(expected = AssertionError.class)
+	public void testCursoStringIntProfessorProfessorSetOfProfessor_1() {
+		new Curso(null, 0, null, null, null);
+	}
+
+	@Test(expected = AssertionError.class)
+	public void testCursoStringIntProfessorProfessorSetOfProfessor_2() {
+		new Curso("C1", -1, null, null, null);
+	}
+
+	@Test(expected = AssertionError.class)
+	public void testCursoStringIntProfessorProfessorSetOfProfessor_5() {
+		new Curso("C1", 0, null, null, null);
+	}
+
+	@Test(expected = AssertionError.class)
+	public void testCursoStringIntProfessorProfessorSetOfProfessor_3() {
+		new Curso("C1", 0, new Professor(), null, null);
+	}
+
+	@Test(expected = AssertionError.class)
+	public void testCursoStringIntProfessorProfessorSetOfProfessor_4() {
+		new Curso("C1", 0, new Professor(), new Professor(), null);
+	}
+
 	@Test
 	public void testFuncoesConsulta() {
 		for (Curso c : Curso.objectos()) {
@@ -64,5 +89,31 @@ public class CursoTest {
 		for (Professor f : Professor.objectos())
 			c.addComissaoCientifica(f);
 	}
+	
+	@Test (expected = AssertionError.class)
+	public void testSetName(){
+		c.setNome(null);
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testSetNumerusClausus(){
+		c.setNumerusClausus(-1);
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testSetCoordenador_1(){
+		c.setCoordenador(null);
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testSetCoordenadorErasmus_1(){
+		c.setCoordenadorErasmus(null);
+	}
+	
+	@Test (expected = AssertionError.class)
+	public void testAddComissaoCientifica_1(){
+		c.addComissaoCientifica(null);
+	}
+	
 
 }
