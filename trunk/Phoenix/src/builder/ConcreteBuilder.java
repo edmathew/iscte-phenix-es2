@@ -28,7 +28,7 @@ public class ConcreteBuilder extends Pessoas {
 
 	@Override
 	public String toString() {
-		return super.toString() + "idade " + idade() + " É maior de idade? "
+		return super.toString() + " idade " + idade() + " É maior de idade? "
 				+ verificaMaiorIdade();
 	}
 

@@ -3,6 +3,12 @@ package business;
 import java.util.HashSet;
 import java.util.Set;
 
+import business.CalendarDate;
+import business.Curso;
+import business.Disciplina;
+import business.Inscricao;
+import business.Seccao;
+
 /***********************************************************
  * Filename: Professor.java
  * Created:  2009/10/20

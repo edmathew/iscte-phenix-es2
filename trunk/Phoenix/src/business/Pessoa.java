@@ -1,5 +1,6 @@
 package business;
 
+import business.CalendarDate;
 import decorators.ConcreteMessageSystem;
 import decorators.MessageSystem;
 
@@ -17,6 +18,7 @@ public abstract class Pessoa {
 	private String nome;
 	private CalendarDate dataNascimento;
 	private String email;
+
 	private MessageSystem messageSystem = new ConcreteMessageSystem();
 
 	/** Invariante da classe. */
@@ -89,6 +91,9 @@ public abstract class Pessoa {
 	public void setNome(String nome) {
 		assert nome != null && nome.length() > 0 : "Invalid nome -> " + nome;
 		this.nome = nome;
+
+		assert checkInvariants() : "Class Invariant isn't satisfied";
+
 		assert checkInvariant_Nome() : "Class Invariant isn't satisfied";
 
 	}
@@ -112,6 +117,7 @@ public abstract class Pessoa {
 		assert email != null && email.length() > 0 : "Invalid Email ->" + email;
 		this.email = email;
 		assert checkInvariant_Email() : "Class Invariant isn't satisfied";
+		;
 	}
 
 	/***********************************************************
@@ -127,4 +133,5 @@ public abstract class Pessoa {
 	public MessageSystem getMessageSystem() {
 		return messageSystem;
 	}
+
 }
