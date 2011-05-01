@@ -92,8 +92,6 @@ public abstract class Pessoa {
 		assert nome != null && nome.length() > 0 : "Invalid nome -> " + nome;
 		this.nome = nome;
 
-		assert checkInvariants() : "Class Invariant isn't satisfied";
-
 		assert checkInvariant_Nome() : "Class Invariant isn't satisfied";
 
 	}
@@ -117,7 +115,6 @@ public abstract class Pessoa {
 		assert email != null && email.length() > 0 : "Invalid Email ->" + email;
 		this.email = email;
 		assert checkInvariant_Email() : "Class Invariant isn't satisfied";
-		;
 	}
 
 	/***********************************************************

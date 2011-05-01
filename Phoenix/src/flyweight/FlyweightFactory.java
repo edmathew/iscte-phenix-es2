@@ -1,4 +1,4 @@
-package flyweigth;
+package flyweight;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -7,7 +7,7 @@ import business.Aluno;
 import business.Professor;
 import business.Pessoa;
 
-public class FlyweigthFactory {
+public class FlyweightFactory {
 
 	private HashMap<String, Pessoa> mapaPessoas = new HashMap<String, Pessoa>();
 

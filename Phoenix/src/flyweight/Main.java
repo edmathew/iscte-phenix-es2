@@ -1,11 +1,11 @@
-package flyweigth;
+package flyweight;
 
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
-		FlyweigthFactory factory = new FlyweigthFactory();
+		FlyweightFactory factory = new FlyweightFactory();
 
 		System.out.println("Teste do fliweigth");
 		Scanner teclado = new Scanner(System.in);

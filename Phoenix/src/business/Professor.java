@@ -156,8 +156,7 @@ public class Professor extends Pessoa {
 		assert grau != null : "Invalid grau -> " + grau;
 		assert nivel != null : "Invalid categoria -> " + nivel;
 		assert extensao > 0 : "Invalid extensao -> " + extensao;
-		assert gabinete != null && gabinete.length() > 0 : "Invalid gabinete -> "
-				+ gabinete;
+		assert gabinete != null && gabinete.length() > 0 : "Invalid gabinete ";
 		assert seccao != null : "Invalid seccao -> " + seccao;
 
 		this.grau = grau;
@@ -248,13 +247,15 @@ public class Professor extends Pessoa {
 		assert d != null : "Invalid disciplina";
 		assert a != null : "Invalid aluno";
 		assert nota >= 0 : "Invalid nota";
-		assert a.disciplinas().contains(a) : "O aluno nao esta inscrito na disciplina";
+		assert a.disciplinas().contains(d) : "O aluno nao esta inscrito na disciplina";
 		assert !a.notaLancada(d) : "A nota do aluno ja esta lancada";
 		assert leccionadas().contains(d) : "O professor nao lecciona a disciplina";
 
 		for (Inscricao i : a.inscricoes())
-			if (i.getDisciplina() == d)
+			if (i.getDisciplina() == d){
 				i.setResultado(nota);
+				i.setDataResultado(CalendarDate.today());
+			}
 
 		assert a.notaLancada(d) : "A nota deveria estar lancada";
 	}

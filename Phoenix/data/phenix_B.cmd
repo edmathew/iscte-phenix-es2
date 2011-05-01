@@ -32,7 +32,7 @@
 --!set A1InEsResDate.day := 20
 --!set A1InEsResDate.month := 1
 --!set A1InEsResDate.year := 2011
--!set A1InEsResDate.now := now
+--!set A1InEsResDate.now := now
 ------------------------------------------------------
 
 !create A1 : Aluno
@@ -66,6 +66,7 @@
 
 !create ofES:Oferta between (ES,lei3)
 !set ofES.ects := 6
+!set ofES.semestre := #par
 !insert (lei,lei3) into Curso_Perfil
 
 !create mA1:Matricula between (A1,lei3)
@@ -84,6 +85,7 @@
 !insert (prof1,ES2) into Professor_Regencia
 !insert (lei, prof1) into Curso_Erasmus
 !insert (lei, prof1) into Curso_Coordenacao	
+!insert (lei, prof1) into Curso_CCientifica
 
 !create DCTI: Departamento
 !set DCTI.nome := 'DCTI'
