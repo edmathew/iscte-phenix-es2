@@ -6,6 +6,12 @@ import business.Seccao;
 import business.Professor.Categoria;
 import business.Professor.GrauAcademico;
 
+/**
+ * AnstractFactory implementada sob forma de interface.
+ * 
+ * @author Edgar Mateus
+ * @author Tiago Amaral
+ */
 public interface AbstractPessoaFactory {
 
 	/**
